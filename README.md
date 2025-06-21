@@ -204,7 +204,8 @@ para compañeros https://wokwi.com/projects/434261698802576385
         "y": 620,
         "wires": [
             [
-                "3594433c651ec453"
+                "3594433c651ec453",
+                "1dba1759d55c0682"
             ]
         ]
     },
@@ -869,26 +870,6 @@ para compañeros https://wokwi.com/projects/434261698802576385
         ]
     },
     {
-        "id": "4716823eb7dc0372",
-        "type": "function",
-        "z": "7704709c0f325c10",
-        "name": "function 2",
-        "func": "var acidez = Number(msg.payload.PH);\nvar mensaje = \"\";\nif (acidez < 5 && acidez > 1) {\n    mensaje = \"demasiado acido.\";\n}\n return{payload : mensaje}",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1500,
-        "y": 620,
-        "wires": [
-            [
-                "f64afa22e940f2f5"
-            ]
-        ]
-    },
-    {
         "id": "9fd17378fc47685c",
         "type": "ui_toast",
         "z": "7704709c0f325c10",
@@ -933,6 +914,26 @@ para compañeros https://wokwi.com/projects/434261698802576385
         "wires": [
             [
                 "9fd17378fc47685c"
+            ]
+        ]
+    },
+    {
+        "id": "1dba1759d55c0682",
+        "type": "function",
+        "z": "7704709c0f325c10",
+        "name": "function 2",
+        "func": "const valor = msg.payload;\nconst estabaFuera = context.get(\"fuera\") || false;\n\nif (valor < 1 || valor > 5) {\n    if (!estabaFuera) {\n        context.set(\"fuera\", true); // actualiza estado\n        msg.payload = ` Alerta: Valor fuera de rango: ${valor}`;\n        msg.topic = \"Alerta\";\n        return msg;\n    } else {\n        return null; // ya estaba fuera, no repite alerta\n    }\n} else {\n    context.set(\"fuera\", false); // vuelve al rango válido\n    return null; // no hay alerta si está en rango\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1460,
+        "y": 700,
+        "wires": [
+            [
+                "f64afa22e940f2f5"
             ]
         ]
     },
