@@ -1,5 +1,5 @@
 # equipo
-para compañeros https://wokwi.com/projects/434261698802576385
+para compañeros 
 ```
 [
     {
@@ -1049,5 +1049,449 @@ para compañeros https://wokwi.com/projects/434261698802576385
         "hidden": false
     }
 ]
+
+```
+[
+    {
+        "id": "38a8e345575e09c6",
+        "type": "tab",
+        "label": "proyecto 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d0af58ef0c7bceaa",
+        "type": "mqtt in",
+        "z": "38a8e345575e09c6",
+        "name": "",
+        "topic": "EQ22",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "924a3888a2bded28",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 340,
+        "wires": [
+            [
+                "50f81ac93903285a",
+                "211a37ec330685b9",
+                "3497ce9c6fa36add",
+                "a1f2454ba142e19c",
+                "af3bb0f6d3d0c52e"
+            ]
+        ]
+    },
+    {
+        "id": "50f81ac93903285a",
+        "type": "function",
+        "z": "38a8e345575e09c6",
+        "name": "LLENADO1LOTE",
+        "func": "msg.payload = msg.payload.VOLUMENBOLSA;\nmsg.topic = \"VOLUMENBOLSA\";\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 260,
+        "wires": [
+            [
+                "c7f4f27584c1d186",
+                "51949bb70b2bb6d2"
+            ]
+        ]
+    },
+    {
+        "id": "211a37ec330685b9",
+        "type": "function",
+        "z": "38a8e345575e09c6",
+        "name": "NUMBOLSASMIN",
+        "func": "msg.payload = msg.payload.FLUJOBOLSA;\nmsg.topic = \"FLUJOBOLSA\";\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 360,
+        "wires": [
+            [
+                "5af352fe62057cd2"
+            ]
+        ]
+    },
+    {
+        "id": "3497ce9c6fa36add",
+        "type": "function",
+        "z": "38a8e345575e09c6",
+        "name": "PESO",
+        "func": "msg.payload = msg.payload.PESO;\nmsg.topic = \"PESO\";\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 460,
+        "wires": [
+            [
+                "46e422dbbc3b83d6"
+            ]
+        ]
+    },
+    {
+        "id": "c7f4f27584c1d186",
+        "type": "ui_gauge",
+        "z": "38a8e345575e09c6",
+        "name": "",
+        "group": "6a923e8a537f9a34",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "VOLUMEN",
+        "label": "BOLSAS ",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "5000",
+        "colors": [
+            "#91e891",
+            "#1de22a",
+            "#184d05"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 690,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "5af352fe62057cd2",
+        "type": "ui_gauge",
+        "z": "38a8e345575e09c6",
+        "name": "",
+        "group": "6a923e8a537f9a34",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "compass",
+        "title": "FLUJO DE BOLSAS",
+        "label": "BOLSAS MIN",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "20",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 760,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "46e422dbbc3b83d6",
+        "type": "ui_gauge",
+        "z": "38a8e345575e09c6",
+        "name": "",
+        "group": "835ca3be5b9273de",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "PESO",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "6",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 650,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "51949bb70b2bb6d2",
+        "type": "ui_chart",
+        "z": "38a8e345575e09c6",
+        "name": "",
+        "group": "b0c7ea688060a41c",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "VOL",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "monotone",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "5000",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#206697",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 710,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a1f2454ba142e19c",
+        "type": "function",
+        "z": "38a8e345575e09c6",
+        "name": "temperatira",
+        "func": "msg.payload = msg.payload.TEMP;\nmsg.topic = \"TEMP\";\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 600,
+        "wires": [
+            [
+                "2d703c62feb4471a",
+                "9d6b6fd6b2f07dbe"
+            ]
+        ]
+    },
+    {
+        "id": "af3bb0f6d3d0c52e",
+        "type": "function",
+        "z": "38a8e345575e09c6",
+        "name": "PRESION",
+        "func": "msg.payload = msg.payload.PRESION;\nmsg.topic = \"PRESION\";\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 700,
+        "wires": [
+            [
+                "e7dc21507ff051e8"
+            ]
+        ]
+    },
+    {
+        "id": "9d6b6fd6b2f07dbe",
+        "type": "ui_gauge",
+        "z": "38a8e345575e09c6",
+        "name": "",
+        "group": "835ca3be5b9273de",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "TEMP",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "180",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 670,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "e7dc21507ff051e8",
+        "type": "ui_gauge",
+        "z": "38a8e345575e09c6",
+        "name": "",
+        "group": "6a923e8a537f9a34",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "PRESION",
+        "label": "bar",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 680,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "2d703c62feb4471a",
+        "type": "ui_chart",
+        "z": "38a8e345575e09c6",
+        "name": "",
+        "group": "b0c7ea688060a41c",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "TEMPE",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "monotone",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "180",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 680,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "924a3888a2bded28",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "52.57.49.38",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "6a923e8a537f9a34",
+        "type": "ui_group",
+        "name": "Group 1 DATOS",
+        "tab": "64f708f375dce390",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "835ca3be5b9273de",
+        "type": "ui_group",
+        "name": "Group 3",
+        "tab": "64f708f375dce390",
+        "order": 3,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "b0c7ea688060a41c",
+        "type": "ui_group",
+        "name": "Group 2 GRAFICA",
+        "tab": "64f708f375dce390",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "64f708f375dce390",
+        "type": "ui_tab",
+        "name": "LLENADO Y SELLADO",
+        "icon": "dashboard",
+        "order": 4,
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+
+
+
+```
+
 
 ```
